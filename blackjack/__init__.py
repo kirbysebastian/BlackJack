@@ -1,9 +1,11 @@
-from blackjack import startGame
+from blackjack import startBlackJack
+import table
 
 def main():
     print('Welcome to BlackJack')
     # TODO: Support multiplayer
 
     playerName = input("Enter your name: ")
-    startGame(playerName)
+    game = startBlackJack(playerName)
+    table_game = table.TableTurn(game)
 
