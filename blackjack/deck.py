@@ -1,7 +1,22 @@
 class Deck():
 
+    cardFace = [
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine",
+        "Ten",
+        "Jack",
+        "Queen",
+        "King",
+        "Ace"
+    ]
+
     cards = {
-        "Ace"    : 1,
         "Two"    : 2,
         "Three"  : 3,
         "Four"   : 4,
@@ -14,7 +29,13 @@ class Deck():
         "Jack"   : 10,
         "Queen"  : 10,
         "King"   : 10,
+        "Ace"    : 11,
     }
+
+    cardStack = [card for card in cardFace]*4
 
     def __init__(self):
         pass
+
+    def getCardValue(self, card):
+        return cards[card]
