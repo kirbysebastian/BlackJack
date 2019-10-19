@@ -1,4 +1,3 @@
-from os import system
 import players
 import deck
 import random
@@ -32,6 +31,9 @@ class Blackjack():
 
     def checkCardValue(self, cardFace):
         return self.deck.cards[cardFace]
+
+    def getNextMove(self, move):
+        pass
 
 def startBlackJack(playerName):
     deck_of_cards = deck.Deck()
