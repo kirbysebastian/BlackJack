@@ -10,6 +10,7 @@ class Blackjack():
         self.is_game_over = False
         self.deck = deck
         self.game_deck = deck.cardStack[:]
+        self._choices = {1:'Hit', 2:'Stand'}
 
     def dealCards(self):
         random_card = None
@@ -32,8 +33,18 @@ class Blackjack():
     def checkCardValue(self, cardFace):
         return self.deck.cards[cardFace]
 
+    def showChoices(self):
+        print('\n')
+        for id_key, choice in self._choices.items():
+            print("{} - {}".format(id_key, choice))
+
     def getNextMove(self, move):
-        pass
+        return self._choices[move]
+
+    def next(self, next_move):
+        if self._choices[next_move] == 'HIT':
+            self.dealCards()
+
 
 def startBlackJack(playerName):
     deck_of_cards = deck.Deck()
