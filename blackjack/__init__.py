@@ -13,14 +13,11 @@ def main():
 
     table_game.start()
     next_move = ''
+    system('cls')
     while not game.isGameOver():
-        # Clear board here
-        # Print here for choices
-        system('cls')
         table_game.showCards()
         game.showChoices()
-        next_move = input('Next move: ')
-        # p_move = game.getNextMove(next_move)
-        # if p_move == 'HIT':
-        #     game.dealCards()
+        table_game.getNextMove()
+        table_game.checkRound()
+
 
