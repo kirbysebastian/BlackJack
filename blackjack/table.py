@@ -22,7 +22,7 @@ class TableTurn():
         for deal in range(0, len(self.game.players*2)):
             cards_dealt.append(self.game.dealCards())
 
-        print(cards_dealt)        
+        #print(cards_dealt)
         for i, player in enumerate(self.receivingSlots):
             self.tableSlots[player].append(cards_dealt[i])
 
@@ -37,14 +37,30 @@ class TableTurn():
                 self.tableSlots[self.game.players[1]].append(card)
 
             elif self.game._choices[key_move] == 'STAND':
-                pass
+
+                dealer_move = 0
+                for player in self.game.players:
+                    if player.is_a_dealer():
+                        dealer_move = self.game.dealer_move(
+                        self.tableSlots[player])
 
     def checkRound(self):
-        player = self.game.players[1]
-        player_slot = self.tableSlots[player]
+        # player = self.game.players[0]
+        # player_slot = self.tableSlots[player]
 
-        if self.game.isBust(player_slot):
-            self.game.is_round_over = True
+        dealer_slot = [slot for player, slot in self.tableSlots.items() if player.is_a_dealer()]
+        if self.game.isBust(dealer_slot[0]):
+            self.clearSlots()
+            self.startFirstDeal()
+
+    def clearSlots(self):
+
+        players = [player for player in self.tableSlots.keys()]
+
+        self.tableSlots = {
+            player:[] for player in players
+        }
+        print(self.tableSlots)
 
 
     def getNextDeal(self):

@@ -12,8 +12,7 @@ def main():
     table_game = table.TableTurn(game)
 
     table_game.start()
-    next_move = ''
-    system('cls')
+    #system('cls')
     while not game.isGameOver():
         table_game.showCards()
         game.showChoices()

@@ -50,6 +50,15 @@ class Blackjack():
         total_value = sum(slot_values)
         return total_value > 21
 
+    def dealer_move(self, dealer_cards):
+        card_values = [self.deck.cards[card] for card in dealer_cards]
+        total_card_val = sum(card_values)
+        print("Dealer cards value: {}".format(total_card_val))
+        if total_card_val + 10 > 21:
+            return 2
+        else:
+            return 1
+
 
 
 def startBlackJack(playerName):
