@@ -13,6 +13,12 @@ class Challenger:
     def getBalance(self):
         return self.money
 
+    def deductMoney(self, amount):
+        self.money -= amount
+
+    def addMoney(self, amount):
+        self.money += amount
+
 class Player(Challenger):
     def __init__(self, name, money, isDealer=False):
         Challenger.__init__(self, name, money)

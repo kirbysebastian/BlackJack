@@ -16,7 +16,9 @@ def main():
     while not game.isGameOver():
         table_game.showCards()
         game.showChoices()
+        table_game.getBet()
         table_game.getNextMove()
         table_game.checkRound()
+        table_game.checkGame()
 
 

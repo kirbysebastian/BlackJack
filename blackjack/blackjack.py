@@ -45,6 +45,9 @@ class Blackjack():
         elif self._choices[key_move] == 'STAND':
             pass
 
+    def dealerMove(self):
+        pass
+
     def isBust(self, playerSlot):
         slot_values = [self.deck.cards[card] for card in playerSlot]
         total_value = sum(slot_values)
@@ -59,6 +62,8 @@ class Blackjack():
         else:
             return 1
 
+    def end_round(self):
+        pass
 
 
 def startBlackJack(playerName):
