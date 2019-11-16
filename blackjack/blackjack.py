@@ -2,6 +2,8 @@ import players
 import deck
 import random
 
+BLACK_JACK_VLUE = 21
+
 class Blackjack():
     def __init__(self, deck, *players):
         self.numberOfPlayers = len(players)
@@ -34,33 +36,29 @@ class Blackjack():
         return self.deck.cards[cardFace]
 
     def showChoices(self):
-        print('\n')
         for id_key, choice in self._choices.items():
             print("{} - {}".format(id_key, choice))
 
-    def nextMove(self, move:int):
-        key_move = int(move)
-        if self._choices[key_move] == 'HIT':
-            pass
-        elif self._choices[key_move] == 'STAND':
-            pass
-
-    def dealerMove(self):
-        pass
-
-    def isBust(self, playerSlot):
-        slot_values = [self.deck.cards[card] for card in playerSlot]
-        total_value = sum(slot_values)
-        return total_value > 21
+    # def nextMove(self, move:int):
+    #     key_move = int(move)
+    #     if self._choices[key_move] == 'HIT':
+    #         pass
+    #     elif self._choices[key_move] == 'STAND':
+    #         pass
 
     def dealer_move(self, dealer_cards):
-        card_values = [self.deck.cards[card] for card in dealer_cards]
+        card_values = [self.checkCardValue(card) for card in dealer_cards]
         total_card_val = sum(card_values)
         print("Dealer cards value: {}".format(total_card_val))
-        if total_card_val + 10 > 21:
+        if total_card_val + 10 > BLACK_JACK_VLUE:
             return 2
         else:
             return 1
+
+    def isBust(self, playerSlot):
+        slot_values = [self.checkCardValue(card) for card in playerSlot]
+        total_value = sum(slot_values)
+        return total_value > BLACK_JACK_VLUE
 
     def end_round(self):
         pass

@@ -16,9 +16,9 @@ class Printer():
             if player.is_a_dealer():
                 hidden_card = dummy_card[1]
                 dummy_card[1] = 'HIDDEN'
-                print("hidden card: {}".format(hidden_card))
+                #print("hidden card: {}".format(hidden_card))
 
-            print("\nPlayer {} cards: {}".format(player.name, dummy_card))
+            print("{} cards: {}".format(player.name, dummy_card))
 
     def showCards(self, table_cards):
         table_cards = table_cards

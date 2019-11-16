@@ -16,9 +16,9 @@ class TableTurn():
 
     def start(self):
         self.startFirstDeal()
-        self.printer.showCards(self.tableSlots)
 
     def showCards(self):
+        system('cls')
         self.printer.showCards(self.tableSlots)
 
     def startFirstDeal(self):
@@ -52,7 +52,6 @@ class TableTurn():
             return
 
         next_move = input('Next move: ') # TODO: Create input verifier
-
         if next_move.isdigit() and int(next_move) in range(1,3):
             key_move = int(next_move)
 
@@ -81,13 +80,12 @@ class TableTurn():
         input("Enter to continue...")
         self.restartRound()
 
-    def round_winner(self):
-        
+    def round_winner(self):        
         dealer_slot = [(player, slot) for player, slot in self.tableSlots.items() if player.is_a_dealer()][0]
         player_slot = [(player, slot) for player, slot in self.tableSlots.items() if not player.is_a_dealer()][0]
 
-        dealer_cards = sum([self.game.deck.cards[card] for card in dealer_slot[1]])
-        player_cards = sum([self.game.deck.cards[card] for card in player_slot[1]])
+        dealer_cards = sum([self.game.checkCardValue(card) for card in dealer_slot[1]])
+        player_cards = sum([self.game.checkCardValue(card) for card in player_slot[1]])
         print("Player total: {}".format(player_cards))
         print("Dealer total: {}".format(dealer_cards))
 
@@ -121,11 +119,6 @@ class TableTurn():
 
     def clearSlots(self):
         players = [player for player in self.tableSlots.keys()]
-
         self.tableSlots = {
             player:[] for player in players
         }
-
-
-    def getNextDeal(self):
-        pass
