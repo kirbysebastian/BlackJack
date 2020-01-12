@@ -1,2 +1,2 @@
 # BlackJack
-Python blackjack project
+Python blackjack project  ***Still ongoing, no plans on finishin it yet. XD***
